@@ -1,0 +1,15 @@
+{
+    "name": "u0_a144/interview_tasks",
+    "authors": [
+        {
+            "name": "esperozzz",
+            "email": "esperoz9@gmail.com"
+        }
+    ],
+    "autoload" : {
+      "files" : [
+            "src/Helper/Image.php"
+        ]
+    },
+    "require": {}
+}
