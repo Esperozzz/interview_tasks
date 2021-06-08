@@ -7,8 +7,10 @@
         }
     ],
     "autoload" : {
-      "files" : [
-            "src/Helper/Image.php"
+        "files" : [
+            "src/Helper/Image.php",
+            "src/Helper/News.php",
+            "src/Helper/SumOfPairs.php"
         ]
     },
     "require": {}

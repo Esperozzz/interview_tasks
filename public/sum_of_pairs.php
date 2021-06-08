@@ -1,16 +1,9 @@
 <?php
 
-error_reporting(-1);
+include_once '../src/Helper/SumOfPairs.php';
 
-$nums = [1, 1, 2, 3, 4, -51, 12, 12, 12, -51];
+use function Tasks\Helper\Iterator\sumOfPairs;
 
-function sumOfPairs(array $nums): int
-{
-    $result = 0;
-    for ($i = 0; $i <= count($nums) - 2; $i++) {
-        if ($nums[$i] === $nums[$i + 1]) {
-            $result++;
-        }
-    }
-    return $result;
-}
+$numbers = [1, 1, 2, 3, 4, -51, 12, 12, 12, -51];
+
+echo 'Result: ' . sumOfPairs($numbers);
