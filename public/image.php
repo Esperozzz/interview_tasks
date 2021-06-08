@@ -1,13 +1,13 @@
 <?php
 
-include_once 'src/Helper/Image.php';
+include_once '../src/Helper/Image.php';
 
-use function Tasks\Helper\Image\makeBanner;
-use function Tasks\Helper\Image\reduceImagePng;
+use function Tasks\Helper\Image\makePngBanner;
 
-$fileName = makeBanner('img/image.png');
+$fileName = makePngBanner('img/image.png');
 
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>

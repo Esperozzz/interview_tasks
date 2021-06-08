@@ -7,13 +7,16 @@ define('BANNER_WIDTH', 200);
 define('BANNER_HEIGHT', 100);
 define('COMPACT_BANNER_PREFIX', 'mini_');
 
-function makeBanner(string $filename): string
+/**
+ * Создает баннер на основе изображения PNG формата
+ */
+function makePngBanner(string $filename): string
 {
     if (!file_exists($filename)) {
         return $filename;
     }
 
-    //Конвертируем изображение в банер
+    //Конвертируем изображение в баннер
     $bannerPath = addFilePrefix($filename, COMPACT_BANNER_PREFIX);
     if (!file_exists($bannerPath)) {
         $banner = reduceImagePng($filename, BANNER_WIDTH, BANNER_HEIGHT);
@@ -22,6 +25,9 @@ function makeBanner(string $filename): string
     return $bannerPath;
 }
 
+/**
+ * Уменьшает размер изобрвжения до указанного формата
+ */
 function reduceImagePng(string $filename, int $width, int $height)
 {
     //Получаем размеры и формат изобрадения
@@ -36,7 +42,7 @@ function reduceImagePng(string $filename, int $width, int $height)
         imageSaveAlpha($img, true);
 
         //Создаем пустой холст
-        $tmp = makeClearPng($width, $height);
+        $tmp = makeClearPngCanvas($width, $height);
 
         //Вычисляем соотношение сторон
         $tw = ceil($height / ($oldHeight / $oldWidth));
@@ -48,14 +54,15 @@ function reduceImagePng(string $filename, int $width, int $height)
         } else {
             imageCopyResampled($tmp, $img, 0, ceil(($height - $th) / 2), 0, 0, $width, $th, $oldWidth, $oldHeight);
         }
-
         return $tmp;
     }
-
     return false;
 }
 
-function makeClearPng(int $width, int $height)
+/**
+ * Создает чистый холст PNG формата
+ */
+function makeClearPngCanvas(int $width, int $height)
 {
     if ($width === 0 || $height === 0) {
         return false;
@@ -70,6 +77,9 @@ function makeClearPng(int $width, int $height)
     return $tmp;
 }
 
+/**
+ * Добавляет префикс к имени файла
+ */
 function addFilePrefix(string $name, string $prefix): string
 {
     $baseName = basename($name);
